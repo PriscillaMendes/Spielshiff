@@ -1,0 +1,101 @@
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    min-height: 100%;
+    margin: 0;
+    
+}
+
+header {
+    box-shadow: 1px 1px 1px 1px rgb(184, 184, 184);
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: flex-start;
+    padding: 0 10px;
+    margin-left: 50px;
+}
+
+header h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: bold;
+    color: #8D65E6;
+    font-size: 35px;
+    font-weight: bolder;
+}
+
+header img{
+    padding: 10px 0;
+    margin-right: 30px;
+}
+
+header a {
+    color: #7570dd;
+    font-size: 18px;
+    text-decoration-style: none;
+}
+
+nav ul {
+    margin-bottom: 0;
+    list-style-type: none;
+    padding-left: 0%;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav a{
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-decoration: none;
+    font-weight: bolder;
+    padding-right: 80px;
+}
+
+nav a:hover{
+    color: black;  
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+header button {
+    margin-right: 75px;
+    align-self: center;
+    background-color: #6B5EE3;
+    border: 10px solid #6B5EE3;
+    border-radius: 30px;
+    font-size: 20px;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+}
+
+header button:hover{
+    box-shadow: 3px 3px 7px rgb(172, 121, 238);
+    transform: translate(-1px, -1px);
+}
+header button:visited{
+    background-color:#5d468f;
+}
+
+/* Rectangle */
+.bg-img{
+position: absolute;
+right: 0%;
+top: 0;
+z-index: -2;
+height: 70%;
+transform: translate(0, 0);
+}
+
+/*
+Cor do titulo Roxo      #8D65E6
+Barra de fora Lilás     #A19CFB
+Cor do botão            #6B5EE3
+Cor da Logo             #DCB53F
+*/
