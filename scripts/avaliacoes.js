@@ -10,6 +10,7 @@ let comentarioQuery = document.getElementById('msg');
 let editarQuery = document.querySelector('.edita-comentario');
 let publicarQuery = document.querySelector('.publica-comentario');
 let voteQuery = document.querySelector('.fa');
+let divVoteQuery = document.querySelector('.upvotes');
 
 for (let av of avaliacoes) {
 	let user = av[0];
@@ -37,7 +38,8 @@ for (let av of avaliacoes) {
 }
 
 function myFunction(x) {
-  x.classList.toggle("fa-thumbs-down");
+  y = x.children[0];
+  y.classList.toggle("fa-thumbs-down");
 }
 
 function publicaComentario() {
@@ -52,10 +54,16 @@ function publicaComentario() {
 	meuComentario.push(tituloQuery.value);
 	meuComentario.push(comentarioQuery.value);
 	
+	if(comentarioQuery.value.length < 3 || tituloQuery.value.length < 3) {
+		alert("Preencha o título e comentários da sua avaliação (mínimo de 3 palavras)");
+		return;
+	}
+	
 	avaliacoes.push(meuComentario);
 	tituloQuery.setAttribute('disabled', true);
 	comentarioQuery.setAttribute('disabled', true);
 	publicarQuery.setAttribute('disabled', true);
+	divVoteQuery.setAttribute('disabled', true);
 	
 	console.log(avaliacoes);
 	
@@ -66,6 +74,7 @@ function editaComentario() {
 	tituloQuery.removeAttribute('disabled');
 	comentarioQuery.removeAttribute('disabled');
 	publicarQuery.removeAttribute('disabled');
+	divVoteQuery.removeAttribute('disabled');
 }
 
 editarQuery.addEventListener('click', editaComentario);
