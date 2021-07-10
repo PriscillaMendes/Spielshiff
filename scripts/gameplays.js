@@ -24,7 +24,7 @@ function salvaVideo() {
 	meusVideosQuery.innerHTML += `<div class="componente-video"><video width="320" height="240" controls><source src=${meuvideosrc} type="video/mp4"></video></div>`;
 }
 
-for (video of listaDeArquivos) {
+for (let video of listaDeArquivos) {
 	let user = video[0];
 	let videosrc = diretorio + video[1] + ".mp4";
 	secaoQuery.innerHTML += `<div class="componente-video"><video width="320" height="240" controls><source src=${videosrc} type="video/mp4"></video><p><label for="video" class="user-label">${user}</p></div>`;
