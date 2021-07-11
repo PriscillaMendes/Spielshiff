@@ -1,0 +1,47 @@
+.imagem-home{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 20px;
+    /* break-inside: avoid; */
+    margin-bottom: 1rem;  
+}
+
+.texto-home{
+    margin-top: 2%;
+    grid-row: 1/2;
+}
+.texto-home h1{
+    text-align: center;
+    font-size: 44px;
+}
+.texto-home h2{
+    text-align: center;
+    font-size: 38px;
+    padding-left: 25%;
+}
+.texto-home h3{
+    font-size: 30px;
+    text-align: end;
+    padding-right: 10%;
+}
+.imagens-home{
+    grid-row: 2/3;
+    column-count: 5;
+    column-gap: 0rem;
+    width: 100%;
+}
+.rodape{
+    grid-row: 3/4;
+}
+.container {
+    display: grid;
+    grid-template-rows: 250px auto 100px;
+}
+.btn-learn-more{
+    margin: 20px 0 0 20px;
+}
+.rodape button:hover {
+    box-shadow: 3px 3px 7px rgb(78, 70, 88);
+    transform: translate(-1px, -1px);
+}
