@@ -77,24 +77,5 @@ function editaComentario() {
 	divVoteQuery.removeAttribute('disabled');
 }
 
-function readVideo(event) {
-  let file = event.target.files[0];
-  if (file.type && !file.type.startsWith('video/')) {
-    alert('File is not an video.');
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.addEventListener('load', (event) => {
-    let meuvideosrc = event.target.result;
-  });
-  reader.readAsDataURL(file);
-}
-
-function salvaVideo() {
-	let meuvideosrc2 = diretorio + meuvideosrc;
-	meusVideosQuery.innerHTML += `<div class="componente-video"><video width="320" height="240" controls><source src=${meuvideosrc} type="video/mp4"></video></div>`;
-}
-
 editarQuery.addEventListener('click', editaComentario);
 publicarQuery.addEventListener('click', publicaComentario);
