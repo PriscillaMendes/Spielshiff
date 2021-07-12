@@ -106,3 +106,59 @@ Barra de fora Lilás     #A19CFB
 Cor do botão            #6B5EE3
 Cor da Logo             #DCB53F
 */
+
+.ref-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* fraction*/
+  margin: 30px;
+}
+
+.sec-ref {
+	padding: 0 15px;
+}
+
+.sec-ref p {
+	text-align: justify;
+}
+
+.sec-ref i {
+	margin: 20px;
+}
+
+.i-title {
+	padding: 8px;
+	border-radius: 30px;
+	color: yellow;
+}
+
+#i-comp {
+	border: #FA0C97 solid 2px;
+	background: #FA0C97;
+}
+
+#i-res {
+	border: #6DB6FB solid 2px;
+	background: #6DB6FB;
+}
+
+#i-av {
+	border: green solid 2px;
+	background: green;
+}
+
+#i-play {
+	border: #8D65E6 solid 2px;
+	background: #8D65E6;
+}
+
+.btn-ref {
+	background: white;
+	border: silver solid 2px;
+	border-radius: 8px;
+	padding: 8px;
+}
+
+.btn-ref a {
+	color: #6B5EE3;
+	text-decoration: none;
+}

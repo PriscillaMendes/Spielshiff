@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Avaliações</title>
+    <link rel="stylesheet" href="../styles/avaliacoes.css">
+    <link rel="shortcut icon" href="../images/spielshiffLogo.svg">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Avaliações</h1>
+    </header>
+    <main>
+      <p>Aqui estão as avaliações de VariavelJogoBD</p>
+      <div class="avaliacoes">
+        <section class="review">
+             
+        </section>
+      </div>
+	  <div class="sua-avaliacao">
+		<h2>Deixe aqui sua avaliação</h2>
+		<section class="av-postada">
+			<div>
+				<div class="div-upvotes">
+					<button class="upvotes" onclick="myFunction(this)"><i class="fa fa-thumbs-up"></i></button>
+				</div>
+				<div class="div-titulo">
+					<label for="av-titulo">Titulo:</label>
+					<input type="text" id="av-titulo">
+				</div>
+				<div class="div-comentario">
+					<label for="msg">Sua avaliação (comentários):</label>
+					<textarea id="msg"></textarea>
+				</div>
+				<button class="edita-comentario">Editar</button>
+				<button class="publica-comentario">Publicar</button>
+			</div>
+		</section>
+    </main>
+    <script src="../scripts/avaliacoes.js"></script>
+  </body>
+</html>
