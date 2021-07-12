@@ -107,6 +107,10 @@ Cor do botão            #6B5EE3
 Cor da Logo             #DCB53F
 */
 
+.ref-main {
+	padding: 5% 10%;
+}
+
 .ref-section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr; /* fraction*/
