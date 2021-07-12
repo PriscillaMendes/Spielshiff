@@ -32,6 +32,7 @@ let listaResenhas = [
 					
 const diretorio = "../references/imgs/";
 let resenhaQuery = document.querySelector(".resenhas, .review");
+let reviewQuery = document.querySelector(".review");
 let imgQuery = document.getElementById("img-file");
 let msgQuery = document.getElementById("msg");
 let publicaQuery= document.querySelector(".publica-resenha");
@@ -48,7 +49,7 @@ for (let res of listaResenhas) {
 		imgHtml = `<img src="${imgsrc}">`;
 	}
 	
-	resenhaQuery.innerHTML += `<div class="componente-avaliacao">
+	reviewQuery.innerHTML += `<div class="componente-avaliacao">
 									<div>
 										<p><strong>${user}:</strong></p>
 									</div>
