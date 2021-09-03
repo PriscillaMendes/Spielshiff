@@ -11,7 +11,7 @@ const router = express.Router();
 
 function sendMail(user_uname, user_email){
     const myMail = "spielshiff@gmail.com";
-    const myPass = "NirLr3rNHXPWTyC";
+    const myPass = ""; //Colocar a senha
 
     const userName = "Abacatinho";
 
