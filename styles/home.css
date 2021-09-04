@@ -1,13 +1,14 @@
 .imagem-home{
     width: 200px;
     height: 200px;
-    border: 1px solid black;
+    border: 1px solid var(--text-color);
     border-radius: 20px;
     /* break-inside: avoid; */
     margin-bottom: 1rem;  
 }
 
 .texto-home{
+    color: var(--text-color);
     margin-top: 2%;
     grid-row: 1/2;
 }
