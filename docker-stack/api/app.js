@@ -9,6 +9,10 @@ import session from 'express-session'
 import methodOverride from 'method-override'
 import flash from 'connect-flash'
 import favicon from 'serve-favicon'
+import passport from'passport'
+import dotenv from 'dotenv'
+
+
 
 // a definição das rotas de cada "entidade" está isolada em seu próprio arquivo
 // de forma a tornar o código do projeto organizado
@@ -17,12 +21,13 @@ import index from './routes/index.js'
 import perfil from './routes/perfil.js'
 import library from './routes/library.js'
 import test from './routes/test.js'
-
-
+//import authGoogle from './routes/auth.js'
+//import googleIndex from './routes/googleIndex.js'
 
 
 const app = express()
 const __dirname = new URL('.', import.meta.url).pathname
+dotenv.config({ path: './config/config.env' })
 
 // configura a pasta que contém as views e o handlebars como templating engine
 app.set('views', `${__dirname}/views`)
@@ -44,6 +49,8 @@ app.use(session({                                         // necessário para fl
   saveUninitialized: true
 }))
 
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use(flash())                                          // necessário para msgs efêmeras
 app.use(express.static(path.join(__dirname, 'public')))   // serve arquivos estáticos
@@ -56,7 +63,8 @@ app.use('/auth', register)
 app.use('/library', library)
 app.use('/perfil', perfil)
 app.use('/test', test)
-
+//app.use('/googleIndex', googleIndex)
+//app.use('/authGoogle', authGoogle)
 
 
 // uma rota "catch-all" para erros de caminho inexistente

@@ -11,7 +11,7 @@ const router = express.Router();
 
 function sendMail(user_uname, user_email){
     const myMail = "spielshiff@gmail.com";
-    const myPass = ""; //Colocar a senha
+    const myPass = "NirLr3rNHXPWTyC"; //Colocar a senha
 
     const userName = "Abacatinho";
 
@@ -31,7 +31,7 @@ function sendMail(user_uname, user_email){
         to: `${user_email}, ${myMail}`,
         replyTo: myMail,
         subject: `Olá ${user_uname}, seja bem-vindo a SpielShiff`,
-        html: `<h2>Olá ${userName}, </h2>
+        html: `<h2>Olá novo ${userName}, </h2>
                 <p>muito obrigado por se cadastrar na nossa plataforma!</p>
                 <p>Aproveite as novidades do mundo dos jogos.</p>
                 <img src="cid:banner"/>
@@ -55,7 +55,7 @@ router.post('/register', async (req, res) => {
             || reg_passwd_conf === '') {
             throw new Error(`Preencha todos os campos!`);
         }
-        const [findOne] = await db.execute(`SELECT * FROM user WHERE email=?`, [reg_user_email])
+        const [findOne] = await db.execute(`SELECT * FROM user WHERE usr_email=?`, [reg_user_email]);
 
         if (findOne.length > 0) {
             throw new Error(`Usuário já existente!`);
@@ -74,32 +74,32 @@ router.post('/register', async (req, res) => {
 
         console.log(mailResp);
 
-        res.redirect('/novo')
+        res.redirect('/test')
     } catch (error) {
-        console.log(error.message)
-        res.send({ error: error.message })
-        res.redirect('/')
+        console.log(error.message);
+        //res.send({ error: error.message })
+        res.redirect('/novo')
 
     }
 });
 
-/*
+
 router.post('/authenticate', async (req, res) => {
-    const { name, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ name }).select('+password');
+    const user = await db.execute(`SELECT * FROM user WHERE usr_email=?`, [email]);
 
-    if (!user)
-        return res.sendStatus(400).send({ error: 'User not found' });
+    if (!user || user.affectedRows >= 1)
+        throw new error("User not found");
 
     if (!await bcrypt.compare(password, user.password))
-        return res.sendStatus(400).send({ error: 'Invalid password' });
+        throw new error("Invalid password");
 
     user.password = undefined;
     const token = jwt.sign({ id: user.id }, authConfig.secret, { expiresIn: 86400 });
 
     res.send({ user, token });
 });
-*/
+
 
 export default router
