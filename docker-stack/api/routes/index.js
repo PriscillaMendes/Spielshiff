@@ -1,16 +1,24 @@
 import express from 'express'
-const router = express.Router()
+import nodemailer from 'nodemailer';
 
-/* GET página inicial */
-router.get('/', async (req, res, next) => {
-  try {
+import metadata from 'gcp-metadata';
+import {OAuth2Client} from'google-auth-library';
 
-    // renderiza a view index
-    res.render('index')
+const oAuth2Client = new OAuth2Client();
 
-  } catch (error) {
-    console.error(error)
-  }
-})
+const router = express.Router();
+
+router.get('/', (req, res) =>{
+    console.log(req.body);
+    res.render('index',{ 
+    })
+});
+
+router.get('/novo', (req, res) =>{
+
+    res.send({ok:"novo"})
+  
+});
+
 
 export default router
