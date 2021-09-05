@@ -52,7 +52,7 @@ As funcionalidades supracitadas, se devidamente implementadas, serão avaliadas 
 - _Front-end_:
   1. [ ] (7%) Todas as páginas _responsive_
   1. [x] (3%) Modo escuro
-  1. [ ] (2-5%) Animações, transições e efeitos visuais diversos (onde fizer sentido)
+  1. [x] (2-5%) Animações, transições e efeitos visuais diversos (onde fizer sentido)
      - [ ] (2%) Modo com menos animações
   1. [ ] (2%) Modo de impressão (se fizer sentido)
   1. [ ] (5%) Organização em componentes
