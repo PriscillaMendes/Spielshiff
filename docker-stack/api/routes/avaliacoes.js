@@ -49,3 +49,24 @@ router.get('/get_avaliacoes', async (req, res) => {
 
     }
 });
+
+router.get('/get_popularidade', async (req, res) => {
+    const {game_name} = req.body;
+
+    try {
+		var cont = 0;
+        const [findOne] = await db.execute(`SELECT gostou FROM avaliacoes WHERE game_name=?`, [game_name]);
+		for (let item of findOne) {
+			if item == "SIM"{
+				cont++;
+			}
+		}
+		return (cont*100)/(findOne.length);
+			
+    } catch (error) {
+        console.log(error.message)
+        res.send({ error: error.message })
+        res.redirect('/references')
+
+    }
+});
