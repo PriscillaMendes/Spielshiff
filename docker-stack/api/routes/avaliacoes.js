@@ -10,7 +10,7 @@ router.post('/register_avaliacoes', async (req, res) => {
         if (findOne.length > 0) {
             await db.execute(`DELETE * FROM avaliacoes WHERE game_name=? AND reg_user_email=?`, [game_name, reg_user_email]);
         }
-        const [insertAvaliacao] = await db.execute(`INSERT INTO avaliacoes VALUES (0,"${game_name}","${reg_user_email}"," ${gostou}", "${titulo_avaliacao}", "${texto_avaliacao}")`);
+        const [insertAvaliacao] = await db.execute(`INSERT INTO avaliacoes VALUES (0,"${game_name}","${reg_user_email}","${gostou}", "${titulo_avaliacao}", "${texto_avaliacao}")`);
         if (!insertAvaliacao || insertAvaliacao.affectedRows < 1) {
             throw new error("Erro na inserção");
         }

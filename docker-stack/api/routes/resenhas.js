@@ -10,7 +10,7 @@ router.post('/register_resenhas', async (req, res) => {
         if (findOne.length > 0) {
             await db.execute(`DELETE * FROM resenhas WHERE game_name=? AND reg_user_email=?`, [game_name, reg_user_email]);
         }
-        const [insertResenhas] = await db.execute(`INSERT INTO avaliacoes VALUES (0,"${game_name}","${reg_user_email}"," ${img_resenha}", "${texto_resenha}")`);
+        const [insertResenhas] = await db.execute(`INSERT INTO resenhas VALUES (0,"${game_name}","${reg_user_email}","${img_resenha}", "${texto_resenha}")`);
         if (!insertResenhas || insertResenhas.affectedRows < 1) {
             throw new error("Erro na inserção");
         }
@@ -28,7 +28,7 @@ router.get('/get_resenha', async (req, res) => {
     const {game_name, reg_user_email} = req.body;
 
     try {
-        return await db.execute(`SELECT img_resenha, texto_resenha FROM avaliacoes WHERE game_name=? AND reg_user_email=?`, [game_name, reg_user_email]);
+        return await db.execute(`SELECT img_resenha, texto_resenha FROM resenhas WHERE game_name=? AND reg_user_email=?`, [game_name, reg_user_email]);
     } catch (error) {
         console.log(error.message)
         res.send({ error: error.message })
@@ -41,7 +41,7 @@ router.get('/get_resenhas', async (req, res) => {
     const {game_name} = req.body;
 
     try {
-        return await db.execute(`SELECT reg_user_email, img_resenha, texto_resenha FROM avaliacoes WHERE game_name=?`, [game_name]);
+        return await db.execute(`SELECT reg_user_email, img_resenha, texto_resenha FROM resenhas WHERE game_name=?`, [game_name]);
     } catch (error) {
         console.log(error.message)
         res.send({ error: error.message })
