@@ -28,7 +28,7 @@ router.get('/get_avaliacao', async (req, res) => {
     const {game_name, reg_user_email} = req.body;
 
     try {
-        return await db.execute(`SELECT * FROM avaliacoes WHERE game_name=? AND reg_user_email=?`, [game_name, reg_user_email]);
+        return await db.execute(`SELECT gostou, titulo_avaliacao, texto_avaliacao FROM avaliacoes WHERE game_name=? AND reg_user_email=?`, [game_name, reg_user_email]);
     } catch (error) {
         console.log(error.message)
         res.send({ error: error.message })
@@ -41,7 +41,7 @@ router.get('/get_avaliacoes', async (req, res) => {
     const {game_name} = req.body;
 
     try {
-        return await db.execute(`SELECT * FROM avaliacoes WHERE game_name=?`, [game_name]);
+        return await db.execute(`SELECT reg_user_email, gostou, titulo_avaliacao, texto_avaliacao FROM avaliacoes WHERE game_name=?`, [game_name]);
     } catch (error) {
         console.log(error.message)
         res.send({ error: error.message })
