@@ -1,7 +1,7 @@
 const nodeAxios = require('axios')
 
 const token = {
-    "access_token": "xhbtdkm17lb7dvghgj8195axtde8vg",
+    "access_token": "xhn4r3ro7wxaton5kajnefdwwczj5u",
     "expires_in": 4784866,
     "token_type": "bearer"
 }
@@ -12,9 +12,9 @@ nodeAxios({
     headers: {
         'Accept': 'application/json',
         'Client-ID':  'giw12afr5w7xdxxydabwtgiipyvhu9',
-        'Authorization': 'Bearer xhbtdkm17lb7dvghgj8195axtde8vg',
+        'Authorization': 'Bearer xhn4r3ro7wxaton5kajnefdwwczj5u',
     },
-    data: 'search "Halo"; fields name,release_date.human;'
+	data: 'fields name, involved_companies; search "Zelda";'
   })
     .then(response => {
         console.log(response.data);
