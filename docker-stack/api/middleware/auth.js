@@ -1,17 +1,23 @@
+import express from 'express';
+
 import jwt from "jsonwebtoken";
+import cookieParser from 'cookie-parser';
+
 
 import { readFile } from 'fs/promises';
 const authConfig = JSON.parse(await readFile(new URL('../config/auth.json', import.meta.url)));
 
-//import authConfig from "../config/auth.json";
+const router = express.Router();
+router.use(cookieParser());
 
-export default (req, res, next) => {
+router.use((req, res, next) => {
 
     let authToken = "";
+    
     const { cookies } = req;
 
-    if ("nginxAccessToken" in cookies) {
-        authToken = cookies.nginxAccessToken;
+    if ("spielshiffAccessToken" in cookies) {
+        authToken = cookies.spielshiffAccessToken;
     } else {
         authToken = req.headers.authorization;
     }
@@ -35,8 +41,9 @@ export default (req, res, next) => {
             next();
         });
 
-    } catch (error) {
+        console.log("Antes auth")
 
+    } catch (error) {
         res.format({
             html: () => {
                 res.redirect('/')
@@ -44,6 +51,7 @@ export default (req, res, next) => {
             json: () => res.status(401).send({ error: 'Token error' })
         });
     }
+}
+);
 
-};
-
+export default router;

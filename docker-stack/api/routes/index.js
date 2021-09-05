@@ -1,12 +1,19 @@
 import express from 'express'
+import cookieParser from 'cookie-parser';
 
 const router = express.Router();
-
+router.use(cookieParser());
 
 router.get('/', (req, res) =>{
-    console.log(req.body);
-    res.render('index',{ 
-    })
+
+    let isUserAuthenticated = false;
+    const { cookies } = req;
+
+    if ("spielshiffAccessToken" in cookies) {
+        isUserAuthenticated = true;
+    }
+
+    res.render('index',{isUserAuthenticated})
 });
 
 

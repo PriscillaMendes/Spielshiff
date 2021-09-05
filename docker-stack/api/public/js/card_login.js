@@ -27,7 +27,7 @@ function id_btn_login() {
                                         <form id="form-login" action="/auth/authenticate" method="POST">
     
                                             <div class=" label-float">
-                                                <input type="email" class="form-control " id="email_login" name="user_login" placeholder="">
+                                                <input type="email" class="form-control " id="user_login" name="user_login" placeholder="">
                                                 <label for="user_login">E-mail</label>
                                             </div>
     

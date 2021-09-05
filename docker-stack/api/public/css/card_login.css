@@ -91,7 +91,7 @@ input {
 .label-float input:focus+label {
     font-size: 13px;
     margin-top: 9px;
-    color: rgb(112, 4, 112);
+    color: rgb(105, 101, 105);
 }
 
 #pop-up-login h1{

@@ -28,8 +28,8 @@ As funcionalidades supracitadas, se devidamente implementadas, serão avaliadas 
      - [ ] Otimização de imagens
      - [ ] Pré-processamento de CSS e JS
   1. [ ] (5%) Integração contínua durante o desenvolvimento (_build_ + teste + _deploy_)
-  1. [ ] (5%) Uso de _containers_ (eg Docker) para isolar ambientes e torná-los facilmente reprodutíveis
-  1. [ ] (5%) Descrição histórias de usuário
+  1. [x] (5%) Uso de _containers_ (eg Docker) para isolar ambientes e torná-los facilmente reprodutíveis
+  1. [x] (5%) Descrição histórias de usuário
      - [ ] (+5%) Uso de _pull requests_ (PRs) para cada história
        - [ ] (+5%) _Code review_ de todos os PRs
 - Integração:

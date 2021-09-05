@@ -14,6 +14,7 @@ import dotenv from 'dotenv'
 
 
 
+
 // a definição das rotas de cada "entidade" está isolada em seu próprio arquivo
 // de forma a tornar o código do projeto organizado
 import register from './routes/authRoute.js'
