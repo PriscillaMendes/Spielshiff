@@ -41,8 +41,6 @@ router.use((req, res, next) => {
             next();
         });
 
-        console.log("Antes auth")
-
     } catch (error) {
         res.format({
             html: () => {
