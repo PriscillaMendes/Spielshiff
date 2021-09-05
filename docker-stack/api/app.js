@@ -22,7 +22,7 @@ import test from './routes/test.js'
 
 
 const app = express()
-const __dirname = 'C:\\workspace\\TP-WEB3\\Spielshiff\\docker-stack\\api'
+const __dirname = new URL('.', import.meta.url).pathname
 
 // configura a pasta que contém as views e o handlebars como templating engine
 app.set('views', `${__dirname}/views`)
