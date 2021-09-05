@@ -1,10 +1,7 @@
-:root {
-    --page-min-height: 100vh;
-    --title-color: #8D65E6;
-    --outside-bar-color: #A19CFB;
-    --button-color: #6B5EE3;
-    --logo-color: #DCB53F;
-    --link-color: #0b1354;
+
+
+.text-library{
+    color: var(--text-color);
 }
 
 body{
@@ -33,7 +30,7 @@ header {
 }
 
 header a {
-    color: #7570dd;
+    color: var(--outside-bar-color);
     font-size: 18px;
     text-decoration-style: none;
 }

@@ -1,4 +1,16 @@
+:root {
+    --bg-color: white;
+    --text-color: var(--bs-dark);
+    --page-min-height: 100vh;
+    --title-color: #8D65E6;
+    --outside-bar-color: #A19CFB;
+    --button-color: #6B5EE3;
+    --logo-color: #DCB53F;
+    --link-color: #0b1354;
+}
+
 body{
+    background-color: var(--bg-color) !important;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     min-height: 100%;
     min-width: 500px;
@@ -30,7 +42,7 @@ header {
 nav h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: bold;
-    color: #8D65E6;
+    color: var(--title-color);
     font-size: 35px;
     font-weight: bolder;
     padding: 10px 0;
@@ -41,7 +53,7 @@ nav img {
 }
 
 header a {
-    color: #7570dd;
+    color: var(--title-color);
     font-size: 18px;
     text-decoration-style: none;
 }
@@ -66,7 +78,7 @@ nav a {
 }
 
 nav a:hover {
-    color: black;  
+    color: var(--text-color);
     text-decoration: none;
     font-weight: bolder;
 }
@@ -74,8 +86,8 @@ nav a:hover {
 .btn-sing-in {
     padding: 0 15px;
     align-self: center;
-    background-color: #6B5EE3;
-    border: 10px solid #6B5EE3;
+    background-color: var(--title-color);
+    border: 10px solid var(--title-color);;
     border-radius: 30px;
     font-size: 20px;
     color: white;
@@ -92,12 +104,12 @@ header button:visited {
 }
 
 header a.active {
-    color: black;
+    color: var(--text-color);
     font-weight: 5s00;
 }
 
 #btn-collapse {
-    background-color: #A19CFB;
+    background-color: var(--outside-bar-color);
 }
 
 /*
@@ -163,6 +175,20 @@ Cor da Logo             #DCB53F
 }
 
 .btn-ref a {
-	color: #6B5EE3;
+	color: var(--title-color);
 	text-decoration: none;
 }
+
+/* =========== media fica no final do arquivo =========== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --page-min-height: 100vh;
+        --bg-color: var(--bs-dark);
+        --text-color: rgb(182, 172, 172);
+        --title-color: #e60039;
+        --outside-bar-color: #dd4d74;
+        --button-color: #e61347;
+        --logo-color: #DCB53F;
+        --link-color: #8d99d6;
+    }
+  }
