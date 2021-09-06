@@ -5,7 +5,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema spielshiff
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `spielshiff` ;
 CREATE SCHEMA IF NOT EXISTS `spielshiff` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `spielshiff` ;
 
@@ -23,6 +22,6 @@ CREATE TABLE IF NOT EXISTS avaliacoes (
   texto_avaliacao VARCHAR(500) NOT NULL
 );
 
-ALTER TABLE user ADD CONSTRAINT email_un UNIQUE (reg_user_email);
+ALTER TABLE avaliacoes ADD CONSTRAINT email_un UNIQUE (reg_user_email);
 
 

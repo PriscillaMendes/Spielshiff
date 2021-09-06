@@ -45,7 +45,8 @@ function sendMail(user_uname, user_email) {
             cid: 'banner'
         }]
     }).then(info => {
-        res.send(info)
+        console.log(info)
+        //res.send(info)
     }).catch(error => { res.send(error) });
 }
 
@@ -75,11 +76,9 @@ router.post('/register', async (req, res) => {
 
         let mailResp = sendMail(reg_user_uname, reg_user_email);
 
-        console.log(mailResp);
-
         res.redirect('/perfil');
     } catch (error) {
-        console.log(error.message);
+        //console.log(error.message);
         res.redirect('/')
 
     }
