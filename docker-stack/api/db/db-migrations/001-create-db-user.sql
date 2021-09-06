@@ -52,3 +52,23 @@ CREATE TABLE IF NOT EXISTS userFollowing (
 
 ALTER TABLE userFollowing ADD CONSTRAINT fk_userFollowing_usrId FOREIGN KEY (usrId) REFERENCES user (usr_id);
 ALTER TABLE userFollowing ADD CONSTRAINT fk_userFollowing_followId FOREIGN KEY (followId) REFERENCES user (usr_id);
+
+CREATE TABLE IF NOT EXISTS userFeedImg(
+  imgId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  usrId INT NOT NULL,
+  imgKey VARCHAR(150) NOT NULL,
+  imgUrl VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS userFeedPub(
+  pubId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  pubUsrId INT NOT NULL,
+  pubImgId INT NOT NULL,
+  pubText TEXT,
+  pubGameName VARCHAR(150)
+);
+
+ALTER TABLE userFeedImg ADD CONSTRAINT fk_userFeed_usrId FOREIGN KEY (usrId) REFERENCES user (usr_id);
+ALTER TABLE userFeedPub ADD CONSTRAINT fk_userFeedPub_imgId FOREIGN KEY (pubImgId) REFERENCES userFeedImg (imgId);
+ALTER TABLE userFeedPub ADD CONSTRAINT fk_userFeedPub_pubUsrId FOREIGN KEY (pubUsrId) REFERENCES user (usr_id);
+

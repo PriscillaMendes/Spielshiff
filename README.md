@@ -17,7 +17,7 @@ As funcionalidades supracitadas, se devidamente implementadas, serão avaliadas 
 - Gestão de usuários:
   1. [x] (4%) Receber e-mail ao se cadastrar
   1. [ ] (3%) Fluxo de "esqueci minha senha"
-  1. [ ] (5%) Integração com autenticação por 3ºs
+  1. [x] (5%) Integração com autenticação por 3ºs
   1. [ ] (3-7%) Possibilidade de alterar dados do perfil
   1. [ ] (5%) Autenticação de 2 fatores
 - Engenharia de Software:
@@ -35,7 +35,7 @@ As funcionalidades supracitadas, se devidamente implementadas, serão avaliadas 
 - Integração:
   1. [ ] (5-10%) APIs de terceiros para fornecer dados do usuário (eg, biblioteca de jogos no Steam, músicas do usuário no Spotify)
   1. [ ] (3-7%) APIs "cosméticas" (eg, previsão do tempo para fazer algum efeitinho)
-  1. [ ] (6%) APIs de serviço de hospedagem (eg, da AWS para armazenar fotos enviadas por usuários)
+  1. [x] (6%) APIs de serviço de hospedagem (eg, da AWS para armazenar fotos enviadas por usuários)
 - Inteligência:
   1. [ ] (5-13%) Alguma inteligência além de um CRUD. Exemplos:
      - Algoritmos de recuperação da informação
@@ -50,7 +50,7 @@ As funcionalidades supracitadas, se devidamente implementadas, serão avaliadas 
   1. [ ] (6%) Camada de dados GraphQL
   1. [ ] (5%) _Upload_ de arquivos
 - _Front-end_:
-  1. [ ] (7%) Todas as páginas _responsive_
+  1. [x] (7%) Todas as páginas _responsive_
   1. [ ] (3%) Modo escuro
   1. [ ] (2-5%) Animações, transições e efeitos visuais diversos (onde fizer sentido)
      - [ ] (2%) Modo com menos animações

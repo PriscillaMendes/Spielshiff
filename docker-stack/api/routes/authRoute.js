@@ -80,8 +80,7 @@ router.post('/register', async (req, res) => {
         res.redirect('/perfil');
     } catch (error) {
         console.log(error.message);
-        //res.send({ error: error.message })
-        res.redirect('/novo')
+        res.redirect('/')
 
     }
 });
@@ -107,22 +106,11 @@ router.post('/authenticate', async (req, res) => {
         res.cookie("spielshiffAccessToken", 'Bearer ' + token, { maxAge: 900000 })
 
         res.redirect('/perfil')
-        /*
-        res.format({
-            html: () => {
-                res.redirect('/perfil')
-            },
-            json: () => res.send({ findOne, token })
-        });
-*/
+      
     } catch (error) {
         console.log(error)
     }
 
 });
-/*
-router.get('/authenticate', (req, res) => {
 
-    res.send(res.body, {ok:true});
-});*/
 export default router

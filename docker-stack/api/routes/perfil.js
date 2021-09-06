@@ -4,7 +4,7 @@ import authMiddleware from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.use(authMiddleware);
+//router.use(authMiddleware);
 
 router.get('/', (req, res, next) =>{
     console.log("Perfil")
