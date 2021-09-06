@@ -42,7 +42,7 @@ router.get('/', async(req, res) => {
         console.log(user_gamelists)
 
         res.format({
-            html: () => res.render('library',{user_gamelists}),
+            html: () => res.render('library',{user_gamelists, isUserAuthenticated: true}),
             json: () => res.json({user_gamelists})    //Só se precisar do json
         });
     }
