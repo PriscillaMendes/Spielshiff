@@ -29,7 +29,7 @@ function id_btn_gamelist() {
         pop_up.innerHTML += `
             <div id="pop-up-gamelist" >
                 
-                <form action="/auth/create-gamelist" method="POST">
+                <form action="/library/create-gamelist" method="POST">
                     <label for="reg_userlist_name">Nome da lista:
                         <input type="text" id="gamelist-input-name" name="reg_userlist_name">
                     </label>

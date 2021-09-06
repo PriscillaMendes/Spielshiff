@@ -22,12 +22,15 @@
         <a href="#">Quero Jogar (2)</a>
       </div>
       
+      {{#if user_gamelists}}
       <div id="my-lists">
         <h3>Minhas Listas</h3>
-        <a href="#">yoko-taro-maluco (5)</a>
-        <a href="#">senhor-da-guerra (5)</a>
-        <a href="#">free-to-play (3)</a>
+        
+        {{#each user_gamelists}}
+          <a href="#">{{gamelist_name}}</a>
+        {{/each}}
       </div>
+      {{/if}}
 
       <button id="createGamelist", type="button" onclick="id_btn_gamelist()">Criar nova lista</button>
     </aside>
