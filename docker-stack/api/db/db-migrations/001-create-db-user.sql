@@ -26,6 +26,30 @@ CREATE TABLE IF NOT EXISTS user (
 ALTER TABLE user ADD CONSTRAINT email_un UNIQUE (usr_email);
 ALTER TABLE user ADD CONSTRAINT user_name_un UNIQUE (usr_uname);
 
+-- -----------------------------------------------------
+-- Table `spielshiff`.`usrlists`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS usrlists;
+
+CREATE TABLE IF NOT EXISTS usrlists (
+  usrlist_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  gamelist_name VARCHAR(100) NOT NULL,
+  usr_id INT NOT NULL,
+  CONSTRAINT fk_UsrList FOREIGN KEY (usr_id) REFERENCES user (usr_id)
+);
+
+-- -----------------------------------------------------
+-- Table `spielshiff`.`gameslist`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS gameslist;
+
+CREATE TABLE IF NOT EXISTS gameslist (
+  gameslist_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  game_id INT NOT NULL,
+  usrlist_id INT NOT NULL,
+  CONSTRAINT fk_UsrGameslist FOREIGN KEY (usrlist_id) REFERENCES usrlists (usrlist_id)
+);
+
 
 CREATE TABLE IF NOT EXISTS userInfo (
   userInfo_id INT NOT NULL,

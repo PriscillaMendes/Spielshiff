@@ -1,13 +1,18 @@
+:root {
+    --altura-imagens: 500px;
+}
 .imagem-home{
+    transition: transform 500ms; 
     width: 200px;
     height: 200px;
-    border: 1px solid black;
+    border: 1px solid var(--text-color);
     border-radius: 20px;
     /* break-inside: avoid; */
     margin-bottom: 1rem;  
 }
 
 .texto-home{
+    color: var(--text-color);
     margin-top: 2%;
     grid-row: 1/2;
 }
@@ -25,19 +30,25 @@
     text-align: end;
     padding-right: 10%;
 }
+
 .imagens-home{
-    margin-right:25px;
+    top: calc(50% - ( var(--altura-imagens) / 2));
+    text-align: center;
     grid-row: 2/3;
     column-count: 5;
-    column-gap: 0rem;
+    column-gap: 1rem;
     width: 100%;
+    height: 100%;
+}
+.imagem-home:hover{
+    transform: scale(1.4);
 }
 .rodape{
     grid-row: 3/4;
 }
 .container {
     display: grid;
-    grid-template-rows: 250px auto 100px;
+    grid-template-rows: 250px var(--altura-imagens) 100px;
 }
 .btn-learn-more{
     margin: 20px 0 0 20px;

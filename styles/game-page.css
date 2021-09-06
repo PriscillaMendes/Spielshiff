@@ -165,3 +165,16 @@ nav a:hover {
 #btn-collapse {
     background-color: var(--outside-bar-color);
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --page-min-height: 100vh;
+        --text-color: black;
+        --title-color: #e61347;
+        --outside-bar-color: #dd4d74;
+        --button-color: #e61347;
+        --logo-color: #DCB53F;
+        --link-color: #7781b4;
+    }
+  }
+  

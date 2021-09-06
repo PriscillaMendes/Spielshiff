@@ -13,19 +13,14 @@ import passport from'passport';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
-
-
-
-
 // a definição das rotas de cada "entidade" está isolada em seu próprio arquivo
 // de forma a tornar o código do projeto organizado
-import register from './routes/authRoute.js';
-import index from './routes/index.js';
-import perfil from './routes/perfil.js';
-import library from './routes/library.js';
-import test from './routes/test.js';
-//import authGoogle from './routes/auth.js'
-//import googleIndex from './routes/googleIndex.js'
+import register from './routes/authRoute.js'
+import index from './routes/index.js'
+import perfil from './routes/perfil.js'
+import library from './routes/library.js'
+import test from './routes/test.js'
+import avaliacoes from './routes/avaliacoes.js'
 
 
 const app = express();
@@ -72,35 +67,10 @@ app.use('/auth', register)
 app.use('/library', library)
 app.use('/perfil', perfil)
 app.use('/test', test)
-//app.use('/googleIndex', googleIndex)
-//app.use('/authGoogle', authGoogle)
+
+app.use('/references', avaliacoes)
 
 
-// uma rota "catch-all" para erros de caminho inexistente
-/*
-app.use((req, res, next) => {
-  const err = new Error('Not Found')
-  err.status = 404
-  next(err)
-})
-*/
 
-// handler de erros em ambientes de dev
-// imprime a stacktrace
-/*
-if (app.get('env') === 'development') {
-  app.use((err, req, res, next) => {
-    const message = err.friendlyMessage ? [err.friendlyMessage, err.message].join('. ') : err.message
-    res.status(err.status || 500)
-  })
-}
-*/
-/*
-// handler de erros de ambiente de produção
-// não mostra a stack de erros pro usuário
-app.use((err, req, res, next) => {
-  res.status(err.status || 500)
-})
-*/
 
 export default app

@@ -1,13 +1,10 @@
-:root {
-    --page-min-height: 100vh;
-    --title-color: #8D65E6;
-    --outside-bar-color: #A19CFB;
-    --button-color: #6B5EE3;
-    --logo-color: #DCB53F;
-    --link-color: #0b1354;
+
+
+.text-library{
+    color: var(--text-color);
 }
 
-body{
+#library-body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     min-height: 100%;
     min-width: 500px;
@@ -22,6 +19,7 @@ body{
     grid-template-areas: 
         "header header"
         "sidebar main";
+        /* "create-list main"; */
 }
 
 header {
@@ -33,7 +31,7 @@ header {
 }
 
 header a {
-    color: #7570dd;
+    color: var(--outside-bar-color);
     font-size: 18px;
     text-decoration-style: none;
 }
@@ -215,4 +213,25 @@ main a:hover, aside a:hover {
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
+}
+
+#pop-up-gamelist{
+    grid-area: sidebar;
+    background-color: #b2b6d321;
+    margin-top: 20px;
+    padding: 10px;
+    /* display: flex; */
+
+}
+
+#gamelist-create-btn {
+    text-align: center;
+    border: 2px solid var(--outside-bar-color);
+    margin-top: 10px;
+    width: 100%;
+    
+}
+
+#gamelist-input-name {
+    border-bottom: 2px solid var(--outside-bar-color);
 }

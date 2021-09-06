@@ -1,19 +1,15 @@
-:root {
-    --page-min-height: 100vh;
-    --title-color: #8D65E6;
-    --outside-bar-color: #A19CFB;
-    --button-color: #6B5EE3;
-    --logo-color: #DCB53F;
-    --link-color: #0b1354;
-}
 
 body{
+    background-color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     min-height: 100%;
     min-width: 500px;
     margin: 0;    
 }
 
+.text-library{
+    color: var(--text-color);
+}
 
 #container {
     display: grid;
@@ -216,3 +212,9 @@ main a:hover, aside a:hover {
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
+@media (prefers-color-scheme: dark) {
+    :root {
+        --link-color: #8d99d6;
+        --text-color: rgb(182, 172, 172);
+    }
+  }
