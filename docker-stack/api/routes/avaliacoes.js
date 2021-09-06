@@ -1,6 +1,8 @@
 import express from 'express';
 import db from '../db.js';
 
+const router = express.Router();
+
 router.post('/register_avaliacoes', async (req, res) => {
     const { game_name, reg_user_email, gostou, titulo_avaliacao, texto_avaliacao } = req.body;
 
@@ -15,11 +17,11 @@ router.post('/register_avaliacoes', async (req, res) => {
             throw new error("Erro na inserção");
         }
 
-        res.redirect('/references/avaliacoes')
+        res.redirect('/')
     } catch (error) {
         console.log(error.message)
         res.send({ error: error.message })
-        res.redirect('/references/avaliacoes')
+        res.redirect('/')
 
     }
 });
@@ -32,25 +34,27 @@ router.get('/get_avaliacao', async (req, res) => {
     } catch (error) {
         console.log(error.message)
         res.send({ error: error.message })
-        res.redirect('/references/avaliacoes')
+        res.redirect('/')
 
     }
 });
 
-router.get('/get_avaliacoes', async (req, res) => {
-    const {game_name} = req.body;
+router.get('/get_avaliacoes/:game_name', async (req, res) => {
+    const {game_name} = req.params.game_name;
 
     try {
-        return await db.execute(`SELECT reg_user_email, gostou, titulo_avaliacao, texto_avaliacao FROM avaliacoes WHERE game_name=?`, [game_name]);
+        var [variavel] = await db.execute(`SELECT reg_user_email, gostou, titulo_avaliacao, texto_avaliacao FROM avaliacoes WHERE game_name=${game_name}`);
+		console.log(variavel);
+		res.send(variavel);
     } catch (error) {
         console.log(error.message)
         res.send({ error: error.message })
-        res.redirect('/references/avaliacoes')
+        res.redirect('/')
 
     }
 });
 
-router.get('/get_popularidade', async (req, res) => {
+/*router.get('/get_popularidade', async (req, res) => {
     const {game_name} = req.body;
 
     try {
@@ -69,4 +73,6 @@ router.get('/get_popularidade', async (req, res) => {
         res.redirect('/references')
 
     }
-});
+});*/
+
+export default router;
