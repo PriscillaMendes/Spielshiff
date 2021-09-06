@@ -179,6 +179,10 @@ Cor da Logo             #DCB53F
 	text-decoration: none;
 }
 
+.a-color{
+    background-color: black !important;
+}
+
 /* =========== media fica no final do arquivo =========== */
 @media (prefers-color-scheme: dark) {
     :root {

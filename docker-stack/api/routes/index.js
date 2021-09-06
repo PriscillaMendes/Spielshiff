@@ -1,18 +1,21 @@
 import express from 'express'
-import nodemailer from 'nodemailer';
-
-import metadata from 'gcp-metadata';
-import {OAuth2Client} from'google-auth-library';
-
-const oAuth2Client = new OAuth2Client();
+import cookieParser from 'cookie-parser';
 
 const router = express.Router();
+router.use(cookieParser());
 
 router.get('/', (req, res) =>{
-    console.log(req.body);
-    res.render('index',{ 
-    })
+
+    let isUserAuthenticated = false;
+    const { cookies } = req;
+
+    if ("spielshiffAccessToken" in cookies) {
+        isUserAuthenticated = true;
+    }
+
+    res.render('index',{isUserAuthenticated})
 });
+
 
 router.get('/novo', (req, res) =>{
 

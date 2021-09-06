@@ -3,15 +3,18 @@ import db from '../db.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
+import cookieParser from 'cookie-parser';
 
-
-//import authConfig from '../config/auth.json';
+import { readFile } from 'fs/promises';
+const authConfig = JSON.parse(await readFile(new URL('../config/auth.json', import.meta.url)));
 
 const router = express.Router();
 
-function sendMail(user_uname, user_email){
+router.use(cookieParser());
+
+function sendMail(user_uname, user_email) {
     const myMail = "spielshiff@gmail.com";
-    const myPass = ""; //Colocar a senha
+    const myPass = "NirLr3rNHXPWTyC"; //Colocar a senha
 
     const userName = "Abacatinho";
 
@@ -19,9 +22,9 @@ function sendMail(user_uname, user_email){
         service: "gmail",
         host: "smtp.gmail.com",
         port: 587,
-        auth: { 
-            user: myMail, 
-            pass: myPass 
+        auth: {
+            user: myMail,
+            pass: myPass
         }
     });
 
@@ -31,7 +34,7 @@ function sendMail(user_uname, user_email){
         to: `${user_email}, ${myMail}`,
         replyTo: myMail,
         subject: `Olá ${user_uname}, seja bem-vindo a SpielShiff`,
-        html: `<h2>Olá ${userName}, </h2>
+        html: `<h2>Olá novo ${userName}, </h2>
                 <p>muito obrigado por se cadastrar na nossa plataforma!</p>
                 <p>Aproveite as novidades do mundo dos jogos.</p>
                 <img src="cid:banner"/>
@@ -39,11 +42,11 @@ function sendMail(user_uname, user_email){
         attachments: [{
             filename: 'banner-email.jpg',
             path: 'public/images/banner-email.jpg',
-            cid: 'banner'  
+            cid: 'banner'
         }]
-    }).then(info =>{
+    }).then(info => {
         res.send(info)
-    }).catch(error =>{res.send(error)});
+    }).catch(error => { res.send(error) });
 }
 
 router.post('/register', async (req, res) => {
@@ -55,7 +58,7 @@ router.post('/register', async (req, res) => {
             || reg_passwd_conf === '') {
             throw new Error(`Preencha todos os campos!`);
         }
-        const [findOne] = await db.execute(`SELECT * FROM user WHERE email=?`, [reg_user_email])
+        const [findOne] = await db.execute(`SELECT * FROM user WHERE usr_email=?`, [reg_user_email]);
 
         if (findOne.length > 0) {
             throw new Error(`Usuário já existente!`);
@@ -65,7 +68,7 @@ router.post('/register', async (req, res) => {
             hash = await bcrypt.hash(reg_passwd_login, 10);
         } else throw new error("Senhas não conferem");
 
-        const [insertUser] = await db.execute(`INSERT INTO user VALUES (0,"${reg_user_name}"," ${reg_user_email}", "${hash}", "${reg_user_uname}")`);
+        const [insertUser] = await db.execute(`INSERT INTO user VALUES (0,"${reg_user_name}","${reg_user_email}", "${hash}", "${reg_user_uname}")`);
         if (!insertUser || insertUser.affectedRows < 1) {
             throw new error("Erro na inserção");
         }
@@ -74,33 +77,39 @@ router.post('/register', async (req, res) => {
 
         console.log(mailResp);
 
-        res.redirect('/novo')
+        res.redirect('/perfil');
     } catch (error) {
-        console.log(error.message)
-        res.send({ error: error.message })
+        console.log(error.message);
         res.redirect('/')
 
     }
 });
 
-
-/*
 router.post('/authenticate', async (req, res) => {
-    const { name, password } = req.body;
+    try {
+        const { user_login, passwd_login } = req.body;
 
-    const user = await User.findOne({ name }).select('+password');
+        //Se o user ou pass estiverem vazios retornar erro
 
-    if (!user)
-        return res.sendStatus(400).send({ error: 'User not found' });
+        const [findOne] = await db.execute(`SELECT * FROM user WHERE usr_email="${user_login}"`);
 
-    if (!await bcrypt.compare(password, user.password))
-        return res.sendStatus(400).send({ error: 'Invalid password' });
+        if (!findOne || findOne === '')
+            throw new error("User not found");
 
-    user.password = undefined;
-    const token = jwt.sign({ id: user.id }, authConfig.secret, { expiresIn: 86400 });
+        if (!await bcrypt.compare(passwd_login, findOne[0].usr_password))
+            throw new error("Invalid password");
 
-    res.send({ user, token });
+        findOne[0].password = undefined;
+        const token = jwt.sign({ id: findOne[0].usr_id }, authConfig.secret, { expiresIn: 86400 });
+
+        res.cookie("spielshiffAccessToken", 'Bearer ' + token, { maxAge: 900000 })
+
+        res.redirect('/perfil')
+      
+    } catch (error) {
+        console.log(error)
+    }
+
 });
-*/
 
 export default router

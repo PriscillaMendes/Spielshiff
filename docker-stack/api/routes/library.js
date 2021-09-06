@@ -1,7 +1,10 @@
 import express from 'express'
 import db from '../db.js';
+import authMiddleware from '../middleware/auth.js';
+
 
 const router = express.Router();
+router.use(authMiddleware);
 
 // router.get('/', (req, res) =>{
 //     console.log(req.body);
@@ -49,6 +52,5 @@ router.get('/', async(req, res) => {
         // res.redirect('/')
     }
 })
-
 
 export default router

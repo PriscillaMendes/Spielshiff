@@ -2,13 +2,16 @@
 import path from 'path'
 
 // módulos npm
-import express from 'express'
-import hbs from 'hbs'
-import logger from 'morgan'
-import session from 'express-session'
-import methodOverride from 'method-override'
-import flash from 'connect-flash'
-import favicon from 'serve-favicon'
+import express from 'express';
+import hbs from 'hbs';
+import logger from 'morgan';
+import session from 'express-session';
+import methodOverride from 'method-override';
+import flash from 'connect-flash';
+import favicon from 'serve-favicon';
+import passport from'passport';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
 // a definição das rotas de cada "entidade" está isolada em seu próprio arquivo
 // de forma a tornar o código do projeto organizado
@@ -20,16 +23,20 @@ import test from './routes/test.js'
 import avaliacoes from './routes/avaliacoes.js'
 
 
+const app = express();
+const __dirname = new URL('.', import.meta.url).pathname
+dotenv.config({ path: './config/config.env' })
+dotenv.config({ path: './config/configAWS.env'})
 
-const app = express()
-// const __dirname = new URL('.', import.meta.url).pathname
-const __dirname = new URL('.', import.meta.url).pathname.substr(1)
 
 // configura a pasta que contém as views e o handlebars como templating engine
 app.set('views', `${__dirname}/views`)
 app.set('view engine', 'hbs')
 hbs.registerPartials(`${__dirname}/views/partials`, console.error)
 app.set('json spaces', 2);
+
+app.use(cors());
+app.use(express.json())
 
 // possibilita enviar um DELETE via formulário,
 // quando é um POST com ?_method=DELETE na querystring
@@ -38,12 +45,15 @@ app.set('json spaces', 2);
 app.use(methodOverride('_method', { methods: ['GET', 'POST'] }))
 app.use(logger('dev'))                                    // registra tudo no terminal
 app.use(express.json())                                   // necessário pra POST, PUT, PATCH etc.
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(session({                                         // necessário para flash()
   secret: 'lalala',
   resave: false,
   saveUninitialized: true
 }))
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 
 app.use(flash())                                          // necessário para msgs efêmeras
@@ -57,35 +67,10 @@ app.use('/auth', register)
 app.use('/library', library)
 app.use('/perfil', perfil)
 app.use('/test', test)
+
 app.use('/references', avaliacoes)
 
 
 
-// uma rota "catch-all" para erros de caminho inexistente
-/*
-app.use((req, res, next) => {
-  const err = new Error('Not Found')
-  err.status = 404
-  next(err)
-})
-*/
-
-// handler de erros em ambientes de dev
-// imprime a stacktrace
-/*
-if (app.get('env') === 'development') {
-  app.use((err, req, res, next) => {
-    const message = err.friendlyMessage ? [err.friendlyMessage, err.message].join('. ') : err.message
-    res.status(err.status || 500)
-  })
-}
-*/
-/*
-// handler de erros de ambiente de produção
-// não mostra a stack de erros pro usuário
-app.use((err, req, res, next) => {
-  res.status(err.status || 500)
-})
-*/
 
 export default app
