@@ -85,7 +85,6 @@ router.post('/register', async (req, res) => {
     }
 });
 
-
 router.post('/authenticate', async (req, res) => {
     try {
         const { user_login, passwd_login } = req.body;
