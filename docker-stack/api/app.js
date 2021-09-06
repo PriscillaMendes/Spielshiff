@@ -17,12 +17,13 @@ import index from './routes/index.js'
 import perfil from './routes/perfil.js'
 import library from './routes/library.js'
 import test from './routes/test.js'
-
+import avaliacoes from './routes/avaliacoes.js'
 
 
 
 const app = express()
-const __dirname = new URL('.', import.meta.url).pathname
+// const __dirname = new URL('.', import.meta.url).pathname
+const __dirname = new URL('.', import.meta.url).pathname.substr(1)
 
 // configura a pasta que contém as views e o handlebars como templating engine
 app.set('views', `${__dirname}/views`)
@@ -56,6 +57,7 @@ app.use('/auth', register)
 app.use('/library', library)
 app.use('/perfil', perfil)
 app.use('/test', test)
+app.use('/references', avaliacoes)
 
 
 
