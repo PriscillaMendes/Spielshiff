@@ -14,16 +14,12 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 
-
-
-
 // a definição das rotas de cada "entidade" está isolada em seu próprio arquivo
 // de forma a tornar o código do projeto organizado
 import register from './routes/authRoute.js';
 import index from './routes/index.js';
 import perfil from './routes/perfil.js';
 import library from './routes/library.js';
-import test from './routes/test.js';
 //import authGoogle from './routes/auth.js'
 //import googleIndex from './routes/googleIndex.js'
 
@@ -71,7 +67,6 @@ app.use('/', index)
 app.use('/auth', register)
 app.use('/library', library)
 app.use('/perfil', perfil)
-app.use('/test', test)
 //app.use('/googleIndex', googleIndex)
 //app.use('/authGoogle', authGoogle)
 
