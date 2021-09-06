@@ -25,9 +25,7 @@
         <button class="btn" type="button">Fallowing</button>
         <button class="btn" type="button">Hire Me</button>
         <button id="opcoes" class="btn" type="button">...</button>
-        <!-- <div id="balao">
-          <button class="btn" type="button">Editar Perfil</button>
-        </div> -->
+
       </div>
     </section>
 
@@ -45,6 +43,20 @@
   </div>
   <div id="publicacao"></div>
 
+  <div>
+    {{#if selectPub}}
+    {{#each selectPub}}
+    <div class="d-flex justify-content-center">
+      <div class="row card col-8">
+        <!--<img style="max-width:500px;max-height:500px;" src="{{imgUrl}}" alt="" srcset="">> -->
+        <div>Resenha: {{pubText}}</div>
+        <div>Jogo: {{pubGameName}}</div>
+      </div>
+    </div>
+
+    {{/each}}
+    {{/if}}
+  </div>
 
   <script src="./js/uploadImage.js"></script>
   <script src="./js/perfil.js"></script>
@@ -53,5 +65,3 @@
     crossorigin="anonymous"></script>
 
 </div>
-
-

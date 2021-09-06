@@ -1,23 +1,9 @@
-const input = document.querySelector('#load-image');
-input.addEventListener('change', function(e) {
-    const tgt = e.target;
-  
-  const files = tgt.files;
-  const fr = new FileReader();
-  
-  fr.onload = function () {
-    let previewImage = document.querySelector('#preview-image');
-    previewImage.src = fr.result;
-    previewImage.style.display = 'block';
-  }
-  
-  fr.readAsDataURL(files[0]);
-});
+
 
 function btn_publish() {
     const pub = document.querySelector('#publicacao');
     pub.innerHTML += `
-                    <div class="d-flex justify-content-center">
+                    <div id="newPub" class="d-flex justify-content-center">
                         <div class="row m-4 col-8" >
                             <div class="col card d-flex justify-content-center" >
                                 <img src="" class="align-self-center" alt="Imagem carregada" id="preview-image" style="display: none; max-width:500px;max-height:500px;">
@@ -25,9 +11,9 @@ function btn_publish() {
 
                             <div class="col card">
                                 <div class="d-flex justify-content-end">
-                                    <button type="button" class="btn-close" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" aria-label="Close" onclick="close_publish()"></button>
                                 </div>
-                                <form action="/test" method="post" enctype="multipart/form-data">
+                                <form action="/perfil/savePubImg" method="post" enctype="multipart/form-data">
                                     <input id="load-image" class="form-control mt-4" type="file" name="file"><br>
 
                                     <div class="input-group mt-4">
@@ -43,5 +29,28 @@ function btn_publish() {
                         </div>
                     </div>
                     `
-    console.log("Ola")
+
+    const input = document.querySelector('#load-image');
+    input.addEventListener('change', function (e) {
+        const tgt = e.target;
+
+        const files = tgt.files;
+        const fr = new FileReader();
+
+        fr.onload = function () {
+            let previewImage = document.querySelector('#preview-image');
+            previewImage.src = fr.result;
+            previewImage.style.display = 'block';
+        }
+
+        fr.readAsDataURL(files[0]);
+    });
+}
+
+
+function close_publish() {
+    const pub = document.querySelector('#publicacao');
+    const closePub = document.querySelector('#newPub');
+    pub.removeChild(closePub);
+
 }
