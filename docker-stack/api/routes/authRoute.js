@@ -14,7 +14,7 @@ router.use(cookieParser());
 
 function sendMail(user_uname, user_email) {
     const myMail = "spielshiff@gmail.com";
-    const myPass = "NirLr3rNHXPWTyC"; //Colocar a senha
+    const myPass = ""; //Colocar a senha
 
     const userName = "Abacatinho";
 
